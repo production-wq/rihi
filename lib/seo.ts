@@ -16,9 +16,39 @@
 import type { Metadata } from "next";
 import { SITE } from "./content";
 
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
+/**
+ * The absolute origin every canonical, Open Graph URL, and sitemap entry is
+ * built from.
+ *
+ * Getting this wrong does not break the build, it breaks canonicalisation
+ * across all 376 pages at once, which is the single most damaging silent error
+ * available on an SEO project. So the resolution order is explicit and a
+ * production build without it fails rather than shipping localhost.
+ *
+ * VERCEL_URL is read, not created. It is a system variable Vercel injects, and
+ * reading it lets preview deployments self-canonical correctly instead of
+ * pointing at production or at localhost. Note the VERCEL_ prefix is reserved,
+ * so no custom variable in this project may use it.
+ */
+function resolveSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  const vercelUrl = process.env.VERCEL_URL?.trim();
+  if (vercelUrl) return `https://${vercelUrl.replace(/\/$/, "")}`;
+
+  if (process.env.VERCEL_ENV === "production") {
+    throw new Error(
+      "NEXT_PUBLIC_SITE_URL is not set on this production deployment. " +
+        "Every canonical, Open Graph URL, and sitemap entry would point at localhost. " +
+        "Set it in the Vercel project settings to the real domain, with no trailing slash."
+    );
+  }
+
+  return "http://localhost:3000";
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 /** Absolute URL for a path. Enforces lowercase and a trailing slash. */
 export function absoluteUrl(path: string): string {
