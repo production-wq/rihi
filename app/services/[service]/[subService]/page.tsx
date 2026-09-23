@@ -80,7 +80,7 @@ export default function SubServicePage({
         <Container width="wide">
           <Breadcrumbs crumbs={crumbs} />
 
-          <div className="grid gap-12 py-8 lg:grid-cols-12 lg:gap-16">
+          <div className="grid gap-12 py-8 pb-section lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-8">
               <p className="eyebrow text-cranberry">{service.name}</p>
               <h1 className="mt-4 text-display-lg">{sub.name}</h1>

@@ -138,11 +138,13 @@ export default function StateHubPage({ params }: { params: { state: string } }) 
           </div>
 
           {cities.length ? (
-            <CityLinkBlock
-              cities={cities}
-              heading={`Towns in ${STATE_NAMES[code]}`}
-              intro={`${cities.length} of ${total.count} ${total.unit} have pages live now, grouped by region. Each one covers the housing stock actually standing there, the permitting authority, and cost ranges for that market.`}
-            />
+            <div className="pb-section">
+              <CityLinkBlock
+                cities={cities}
+                heading={`Towns in ${STATE_NAMES[code]}`}
+                intro={`${cities.length} of ${total.count} ${total.unit} have pages live now, grouped by region. Each one covers the housing stock actually standing there, the permitting authority, and cost ranges for that market.`}
+              />
+            </div>
           ) : (
             <section className="py-section">
               <div className="max-w-prose rounded-card border-hairline border-shell bg-surface-sunken p-7">

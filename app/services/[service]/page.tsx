@@ -172,6 +172,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
             heading={`${service.name} by town`}
             intro={`Each town has its own ${service.shortName.toLowerCase()} page with the housing stock, the permitting authority, and a cost range for that market specifically.`}
           />
+          <div className="pb-section" />
         </Container>
       </main>
 

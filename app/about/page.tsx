@@ -33,7 +33,7 @@ export default function AboutPage() {
         <Container width="wide">
           <Breadcrumbs crumbs={CRUMBS} />
 
-          <div className="grid gap-12 py-8 lg:grid-cols-12 lg:gap-16">
+          <div className="grid gap-12 py-8 pb-section lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <h1 className="text-display-lg">{ABOUT.headline}</h1>
               <div className="prose-body mt-8">

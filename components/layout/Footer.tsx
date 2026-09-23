@@ -34,7 +34,7 @@ export function Footer() {
     .filter((group) => group.cities.length > 0);
 
   return (
-    <footer className="mt-section-lg border-t-hairline border-marsh-mid bg-marsh text-ink-inverse">
+    <footer className="border-t-hairline border-marsh-mid bg-marsh text-ink-inverse">
       <Container width="wide">
         <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
           <div>
@@ -67,7 +67,15 @@ export function Footer() {
         {byState.length ? (
           <div className="border-t-hairline border-marsh-mid py-10">
             <h2 className="eyebrow text-oyster/50">Towns with pages live now</h2>
-            <div className="mt-5 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              className={`mt-5 grid gap-x-10 gap-y-8 ${
+                byState.length === 1
+                  ? "grid-cols-1"
+                  : byState.length === 2
+                    ? "sm:grid-cols-2"
+                    : "sm:grid-cols-2 lg:grid-cols-3"
+              }`}
+            >
               {byState.map((group) => (
                 <div key={group.state}>
                   <h3 className="font-mono text-mono uppercase text-oyster/70">

@@ -28,7 +28,7 @@ export default function FreeEstimatePage() {
         <Container width="wide">
           <Breadcrumbs crumbs={CRUMBS} />
 
-          <div className="grid gap-12 py-8 lg:grid-cols-12 lg:gap-16 lg:py-10">
+          <div className="grid gap-12 py-8 pb-section lg:grid-cols-12 lg:gap-16 lg:py-10">
             <div className="lg:col-span-7">
               <h1 className="text-display-lg">{FREE_ESTIMATE_PAGE.headline}</h1>
               <p className="mt-5 max-w-prose text-body-lg text-ink-body">

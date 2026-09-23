@@ -136,7 +136,7 @@ export default function ServiceCityPage({
 
           <LocalLedger fields={ledger} caption={SHARED.costDisclaimer} />
 
-          <div className="grid gap-12 py-14 lg:grid-cols-12 lg:gap-16 lg:py-16">
+          <div className="grid gap-12 py-14 pb-section lg:grid-cols-12 lg:gap-16 lg:py-16">
             <div className="lg:col-span-8">
               <ProseBody paragraphs={body} />
               <InlineLeadForm

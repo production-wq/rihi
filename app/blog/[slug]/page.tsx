@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         </Container>
 
         <Container>
-          <article className="py-4">
+          <article className="py-4 pb-section">
             <header className="max-w-prose">
               <p className="font-mono text-mono uppercase text-ink-muted">
                 {new Date(post.publishedAt).toLocaleDateString("en-US", {
