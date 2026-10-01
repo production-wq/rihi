@@ -110,10 +110,10 @@ export function Footer() {
         ) : null}
 
         <div className="border-t-hairline border-marsh-mid py-8">
-          <p className="max-w-prose text-body-sm leading-relaxed text-oyster/60">
+          <p className="mx-auto max-w-prose text-center text-body-sm leading-relaxed text-oyster/60">
             {FOOTER.disclosure}
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
             <p className="font-mono text-mono uppercase text-oyster/40">
               &copy; {new Date().getFullYear()} {SITE.brandName}
             </p>
