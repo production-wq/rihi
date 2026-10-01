@@ -11,7 +11,8 @@
  * -----------------------------------------------------------------------------
  * The project is not configured with Sanity credentials yet. Rather than
  * failing a build or throwing at request time, an unconfigured client returns
- * an empty result and the blog hub renders the empty state from lib/content.ts.
+ * an empty result, and the blog falls back to the posts that ship in
+ * lib/data/blog-posts.ts.
  *
  * That is deliberate. The blog is the one part of this site that depends on an
  * external service, and a missing environment variable should degrade one
@@ -21,6 +22,8 @@
  * No SDK dependency: the query API is a GET request, which keeps the bundle
  * smaller and avoids a package for something this small.
  */
+
+import { LOCAL_POSTS } from "../data/blog-posts";
 
 const PROJECT_ID = process.env.SANITY_PROJECT_ID ?? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const DATASET = process.env.SANITY_DATASET ?? process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
@@ -81,11 +84,21 @@ const POST_FIELDS = `
   category
 `;
 
+/**
+ * Published posts, newest first. Posts from Sanity are merged with the ones
+ * that ship in lib/data/blog-posts.ts. A Sanity post with the same slug wins.
+ */
 export async function getPosts(limit = 50): Promise<Post[]> {
   const result = await sanityFetch<Post[]>(
     `*[_type == "post" && !(_id in path("drafts.**")) && defined(publishedAt)] | order(publishedAt desc)[0...${limit}]{${POST_FIELDS}}`
   );
-  return result ?? [];
+  const remote = result ?? [];
+  const remoteSlugs = new Set(remote.map((p) => p.slug));
+  const local = LOCAL_POSTS.filter((p) => !remoteSlugs.has(p.slug));
+
+  return [...remote, ...local]
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, limit);
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
@@ -93,5 +106,5 @@ export async function getPost(slug: string): Promise<Post | null> {
     `*[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))][0...1]{${POST_FIELDS}}`,
     { slug }
   );
-  return result?.[0] ?? null;
+  return result?.[0] ?? LOCAL_POSTS.find((p) => p.slug === slug) ?? null;
 }

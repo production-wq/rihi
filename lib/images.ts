@@ -115,90 +115,6 @@ export const IMAGES = {
     height: 600,
     alt: "A white gutter and downspout corner against grey clapboard siding.",
   },
-  "gallery-roofing-triple-decker": {
-    src: "/images/gallery/gallery-roofing-triple-decker.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A three-story triple decker with a newly shingled roof and a lower flat roof over the rear ell.",
-  },
-  "gallery-roofing-cape-cod": {
-    src: "/images/gallery/gallery-roofing-cape-cod.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A Cape Cod house with two shed dormers and a newly shingled charcoal roof.",
-  },
-  "gallery-windows-victorian": {
-    src: "/images/gallery/gallery-windows-victorian.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A Victorian house facade with newly installed tall double hung windows and a first floor bay.",
-  },
-  "gallery-windows-colonial": {
-    src: "/images/gallery/gallery-windows-colonial.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A centre chimney colonial with new twelve-over-twelve style windows and a fieldstone wall in front.",
-  },
-  "gallery-siding-coastal-cottage": {
-    src: "/images/gallery/gallery-siding-coastal-cottage.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A coastal cottage with newly installed cedar shingle siding and a screened porch, beach grass in front.",
-  },
-  "gallery-siding-farmhouse": {
-    src: "/images/gallery/gallery-siding-farmhouse.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A farmhouse with new white lap siding and black shutters, with a rear ell and a barn behind.",
-  },
-  "gallery-bathroom-tub-to-shower": {
-    src: "/images/gallery/gallery-bathroom-tub-to-shower.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A tub to shower conversion with white subway tile, a low curb, and a recessed niche.",
-  },
-  "gallery-bathroom-walk-in": {
-    src: "/images/gallery/gallery-bathroom-walk-in.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A barrier free walk-in shower with grey tile, a linear drain, a bench, and a grab bar.",
-  },
-  "gallery-kitchen-triple-decker": {
-    src: "/images/gallery/gallery-kitchen-triple-decker.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A compact renovated kitchen with white shaker cabinets and a window looking onto a close neighbouring house.",
-  },
-  "gallery-kitchen-colonial": {
-    src: "/images/gallery/gallery-kitchen-colonial.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A renovated colonial kitchen with cabinets built around a plastered chimney chase and exposed beams.",
-  },
-  "gallery-door-federal": {
-    src: "/images/gallery/gallery-door-federal.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A black Federal style entry door with a fanlight and sidelights, set in white clapboard.",
-  },
-  "gallery-door-ranch": {
-    src: "/images/gallery/gallery-door-ranch.jpg",
-    width: 1200,
-    height: 900,
-    alt: "A new half-light fibreglass entry door on a mid-century ranch with brick and painted siding.",
-  },
-  "gallery-gutters-victorian": {
-    src: "/images/gallery/gallery-gutters-victorian.jpg",
-    width: 1200,
-    height: 900,
-    alt: "New white seamless gutter following the complex roofline of a Victorian house.",
-  },
-  "gallery-gutters-colonial": {
-    src: "/images/gallery/gallery-gutters-colonial.jpg",
-    width: 1200,
-    height: 900,
-    alt: "New white six inch gutter along the long eave of a colonial house after rain.",
-  },
   "about-jobsite": {
     src: "/images/about/about-jobsite.jpg",
     width: 1600,
@@ -300,15 +216,4 @@ export const BLOG_IMAGES: Record<string, ImageName> = {
   "kitchen-remodeling": "blog-kitchen-remodeling",
   "entry-doors": "blog-entry-doors",
   gutters: "blog-gutters",
-};
-
-/** Gallery slots grouped by service, two each. */
-export const GALLERY_BY_SERVICE: Record<string, ImageName[]> = {
-  roofing: ["gallery-roofing-triple-decker", "gallery-roofing-cape-cod"],
-  windows: ["gallery-windows-victorian", "gallery-windows-colonial"],
-  siding: ["gallery-siding-coastal-cottage", "gallery-siding-farmhouse"],
-  "bathroom-remodeling": ["gallery-bathroom-tub-to-shower", "gallery-bathroom-walk-in"],
-  "kitchen-remodeling": ["gallery-kitchen-triple-decker", "gallery-kitchen-colonial"],
-  "entry-doors": ["gallery-door-federal", "gallery-door-ranch"],
-  gutters: ["gallery-gutters-victorian", "gallery-gutters-colonial"],
 };

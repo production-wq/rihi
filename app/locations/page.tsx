@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Header } from "@/components/layout/Header";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
+import { LocationDirectory } from "@/components/sections/LocationDirectory";
 import { getLiveCities } from "@/lib/phase";
 import { STATE_HUB } from "@/lib/copy/state-hub";
 import { STATE_NAMES, STATE_SLUGS, type StateCode } from "@/lib/data/cities";
@@ -87,6 +88,14 @@ export default function LocationsIndexPage() {
               </p>
             </div>
           </section>
+
+          <div className="pb-section">
+            <LocationDirectory
+              cities={live}
+              heading="Every location we cover"
+              intro="The three state pages are live now. Towns with their own page are listed under each state, grouped by region, and every one of them links to all seven services."
+            />
+          </div>
         </Container>
       </main>
 

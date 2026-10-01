@@ -4,6 +4,7 @@ import { SERVICES, getAllSubServicePaths } from "@/lib/data/services";
 import { getLiveCities } from "@/lib/phase";
 import { STATE_SLUGS, getCityUrl, getCityServiceUrl } from "@/lib/data/cities";
 import { TOOLS } from "@/lib/data/tools";
+import { getPosts } from "@/lib/sanity/client";
 
 /**
  * Dynamic sitemap. See CLAUDE.md section 9.
@@ -23,7 +24,7 @@ import { TOOLS } from "@/lib/data/tools";
 
 const SITEMAP_LIMIT = 10000;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const cities = getLiveCities();
 
@@ -35,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/blog"), lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: absoluteUrl("/free-estimate"), lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: absoluteUrl("/about"), lastModified: now, changeFrequency: "yearly", priority: 0.5 },
-    { url: absoluteUrl("/gallery"), lastModified: now, changeFrequency: "monthly", priority: 0.4 },
     { url: absoluteUrl("/privacy-policy"), lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: absoluteUrl("/terms-conditions"), lastModified: now, changeFrequency: "yearly", priority: 0.2 },
   ];
@@ -82,6 +82,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
       });
     }
+  }
+
+  for (const post of await getPosts(200)) {
+    entries.push({
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
   }
 
   for (const tool of TOOLS) {

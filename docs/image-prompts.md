@@ -4,7 +4,7 @@ Every image slot on the site. Read this file at the start of every session, alon
 
 **Rule: do not invent filenames.** If a component needs an image that is not in this file, stop and add the slot here first, with a prompt and a folder path. A referenced file that does not exist breaks the build. A generated file that nothing references is wasted work.
 
-**Total slots: 41.**
+**Total slots: 27.**
 
 ---
 
@@ -111,79 +111,11 @@ These are deliberately tighter and simpler than the service heroes. At card size
 
 ---
 
-## 4. GALLERY IMAGES (14)
-
-**Folder:** `/public/images/gallery/`
-**Aspect ratio:** 4:3, render 1200x900
-**Used on:** `/gallery/`, and in the relevant service hub galleries
-
-Two per service. Each pair shows completed work on a genuinely different New England building type, so the gallery reads as regional range rather than seven versions of the same house.
-
-**Important.** These are illustrative renderings of finished work, not photographs of projects this business performed. Do not caption them as completed projects, do not attach a town name implying a real job, and replace them with real contractor photography as soon as it is available. The gallery placeholder copy in `content.ts` says exactly this.
-
-### Roofing
-- **`gallery-roofing-triple-decker`**
-  A completed asphalt shingle roof on a three-story New England triple decker, photographed from across the street. New dark grey architectural shingles on the main roof, a visible lower flat roof section over the rear ell, three stacked porches on the front, grey clapboard siding. Narrow side yard, neighbouring house close by. Overcast light, no people.
-  *Alt: A three-story triple decker with a newly shingled roof and a lower flat roof over the rear ell.*
-- **`gallery-roofing-cape-cod`**
-  A completed roof on a Cape Cod style house, one and a half stories, low eaves, two shed dormers, weathered cedar shingle siding, new charcoal asphalt shingles, a central brick chimney. Sandy soil and scrub pine at the edges. Overcast coastal light, no people.
-  *Alt: A Cape Cod house with two shed dormers and a newly shingled charcoal roof.*
-
-### Windows
-- **`gallery-windows-victorian`**
-  The facade of a New England Victorian with newly installed double hung windows, tall narrow openings with decorative headers, a bay window on the first floor, painted trim in two colours. Mature maple to one side. Overcast light, no people.
-  *Alt: A Victorian house facade with newly installed tall double hung windows and a first floor bay.*
-- **`gallery-windows-colonial`**
-  The front of a centre chimney colonial with twelve-over-twelve style double hung windows in white clapboard, five windows across the second floor and two flanking a central door below. A fieldstone wall in the foreground. Overcast light, no people.
-  *Alt: A centre chimney colonial with new twelve-over-twelve style windows and a fieldstone wall in front.*
-
-### Siding
-- **`gallery-siding-coastal-cottage`**
-  A shingled coastal cottage with newly installed cedar shingle siding still light in colour, white trim, a screened porch, and beach grass and a weathered fence in the foreground. Flat grey coastal light, no people.
-  *Alt: A coastal cottage with newly installed cedar shingle siding and a screened porch, beach grass in front.*
-- **`gallery-siding-farmhouse`**
-  A New England farmhouse with new white fiber cement lap siding and black shutters, a wide ell running off the back, a stone foundation, and a barn partly visible behind. Bare trees and open field. Overcast light, no people.
-  *Alt: A farmhouse with new white lap siding and black shutters, with a rear ell and a barn behind.*
-
-### Bathrooms
-- **`gallery-bathroom-tub-to-shower`**
-  A finished tub to shower conversion in a small bathroom, white subway tile to the ceiling, a low tiled curb, a clear glass panel, a recessed niche, and a chrome rain head. A small double hung window with painted trim at the end wall. Daylight, no people, no staging.
-  *Alt: A tub to shower conversion with white subway tile, a low curb, and a recessed niche.*
-- **`gallery-bathroom-walk-in`**
-  A finished barrier free walk-in shower with large format grey tile, a linear drain, a folding bench, and a grab bar, in a bathroom with wide plank floors and a painted wood door. Daylight from a side window, no people.
-  *Alt: A barrier free walk-in shower with grey tile, a linear drain, a bench, and a grab bar.*
-
-### Kitchens
-- **`gallery-kitchen-triple-decker`**
-  A renovated kitchen in a working class New England multi-family, compact, with white shaker cabinets, a butcher block counter, open shelving on one wall, and a double hung window over the sink looking onto a close neighbouring house. Daylight, no people.
-  *Alt: A compact renovated kitchen with white shaker cabinets and a window looking onto a close neighbouring house.*
-- **`gallery-kitchen-colonial`**
-  A renovated kitchen in an older colonial, with a large plastered chimney chase in the middle of one wall, cabinets built around it, soapstone counters, wide plank floors, and exposed hand-hewn ceiling beams. Daylight from two windows, no people.
-  *Alt: A renovated colonial kitchen with cabinets built around a plastered chimney chase and exposed beams.*
-
-### Entry Doors
-- **`gallery-door-federal`**
-  A newly installed Federal style entry, a black painted six panel door with a fanlight above and sidelights either side, set in white clapboard with granite steps. Overcast light, no people.
-  *Alt: A black Federal style entry door with a fanlight and sidelights, set in white clapboard.*
-- **`gallery-door-ranch`**
-  A newly installed fibreglass entry door with a half-light on a mid-century New England ranch, brick veneer to one side, painted wood siding to the other, a simple concrete stoop, foundation shrubs. Overcast light, no people.
-  *Alt: A new half-light fibreglass entry door on a mid-century ranch with brick and painted siding.*
-
-### Gutters
-- **`gallery-gutters-victorian`**
-  Newly installed white seamless gutter running along the complex roofline of a New England Victorian, following a change in roof plane, with a downspout at the corner. Decorative brackets and painted trim visible. Overcast light, no people, no logos.
-  *Alt: New white seamless gutter following the complex roofline of a Victorian house.*
-- **`gallery-gutters-colonial`**
-  Newly installed white six inch gutter along the long eave of a colonial with a steep roof, a downspout at each end, dark grey shingles above and white clapboard below, wet from recent rain. Overcast light, no people, no logos.
-  *Alt: New white six inch gutter along the long eave of a colonial house after rain.*
-
----
-
-## 5. ABOUT PAGE IMAGE (1)
+## 4. ABOUT PAGE IMAGE (1)
 
 **Folder:** `/public/images/about/`
 
-### 5.1 `about-jobsite`
+### 4.1 `about-jobsite`
 - **Aspect ratio:** 3:2, render 1600x1067
 - **Used on:** `/about/`
 - **Prompt:** A contractor on a residential job site in New England, seen from behind and at a distance, standing on the ground and looking up at the roof of an older two-and-a-half story clapboard house. Work truck with a ladder rack parked at the kerb, an extension ladder against the eave, a tarp on the lawn. Mature oak trees, granite curbing. Overcast morning light, muted colour. Documentary photography, no visible face, no readable logos on the truck or clothing.
@@ -192,7 +124,7 @@ Two per service. Each pair shows completed work on a genuinely different New Eng
 
 ---
 
-## 6. BLOG FEATURED IMAGES (7)
+## 5. BLOG FEATURED IMAGES (7)
 
 **Folder:** `/public/images/blog/`
 **Aspect ratio:** 2:1, render 1600x800
@@ -212,7 +144,7 @@ These are more atmospheric and less product-focused than the service images, bec
 
 ---
 
-## 7. TRUST SECTION IMAGES (3)
+## 6. TRUST SECTION IMAGES (3)
 
 **Folder:** `/public/images/trust/`
 **Aspect ratio:** 1:1, render 800x800
@@ -220,17 +152,17 @@ These are more atmospheric and less product-focused than the service images, bec
 
 Square, quiet, and abstract enough to sit behind text without competing. Each one has to earn its place next to its specific claim.
 
-### 7.1 `trust-pricing`
+### 6.1 `trust-pricing`
 - **Pairs with:** "We publish the numbers"
 - **Prompt:** A close overhead view of a folded paper estimate on a worn wooden work surface, handwritten figures partly visible but not legible, a carpenter's pencil and a retractable tape measure beside it. Soft window light from one side, muted colour. Still life documentary photography, no people, no readable text, no logos.
 - **Alt text:** A folded paper estimate on a wooden surface with a carpenter's pencil and tape measure.
 
-### 7.2 `trust-response`
+### 6.2 `trust-response`
 - **Pairs with:** "You hear back the same day"
 - **Prompt:** A work truck parked at the kerb outside an older New England clapboard house in early morning, ladder rack loaded, back doors open. Long low light, dew on the grass, mature trees. Documentary photography, no people, no readable logos on the truck.
 - **Alt text:** A work truck with a loaded ladder rack parked outside an older clapboard house in early morning.
 
-### 7.3 `trust-coverage`
+### 6.3 `trust-coverage`
 - **Pairs with:** "All three states, all seven services"
 - **Prompt:** A New England fieldstone wall running along the edge of a country road, mossy granite stones stacked without mortar, mature maples behind it, the road curving out of frame. Overcast autumn light, muted colour. Landscape documentary photography, no people, no signage.
 - **Alt text:** A mossy fieldstone wall running along the edge of a country road lined with maples.
@@ -244,11 +176,10 @@ Square, quiet, and abstract enough to sit behind text without competing. Each on
 | Hero | 2 | `/public/images/hero/` |
 | Service heroes | 7 | `/public/images/services/` |
 | Service cards | 7 | `/public/images/service-cards/` |
-| Gallery | 14 | `/public/images/gallery/` |
 | About | 1 | `/public/images/about/` |
 | Blog featured | 7 | `/public/images/blog/` |
 | Trust | 3 | `/public/images/trust/` |
-| **Total** | **41** | |
+| **Total** | **27** | |
 
 ## POST-GENERATION CHECKLIST
 

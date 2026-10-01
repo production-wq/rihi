@@ -95,7 +95,6 @@ Deliberate omissions: no database, no authentication, no user accounts, no e-com
 │   │
 │   ├── about/page.tsx
 │   ├── free-estimate/page.tsx
-│   ├── gallery/page.tsx
 │   ├── privacy-policy/page.tsx
 │   ├── terms-conditions/page.tsx
 │   │
@@ -130,7 +129,6 @@ Deliberate omissions: no database, no authentication, no user accounts, no e-com
 │       ├── hero/
 │       ├── services/
 │       ├── service-cards/
-│       ├── gallery/
 │       ├── blog/
 │       ├── trust/
 │       └── about/

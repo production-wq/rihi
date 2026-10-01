@@ -84,22 +84,22 @@ export interface BlogTopic {
 export const BLOG_TOPICS: BlogTopic[] = [
   // === TIER 1: highest verified volume, near-zero difficulty ===
   { id: 1, title: "Gutter Installation Cost in New England: What You Actually Pay Per Foot", category: "cost-guide", published: false, relatedServiceSlugs: ["gutters"], relatedCitySlugs: [], state: "ALL" },
-  { id: 2, title: "Tub to Shower Conversion Cost in New England", category: "cost-guide", published: false, relatedServiceSlugs: ["bathroom-remodeling"], relatedCitySlugs: [], state: "ALL" },
-  { id: 3, title: "Ice Dam Removal and Prevention: What Actually Causes Them", category: "new-england", published: false, relatedServiceSlugs: ["roofing", "gutters"], relatedCitySlugs: [], state: "ALL" },
+  { id: 2, title: "Tub to Shower Conversion Cost in New England", category: "cost-guide", published: true, relatedServiceSlugs: ["bathroom-remodeling"], relatedCitySlugs: [], state: "ALL" },
+  { id: 3, title: "Ice Dam Removal and Prevention: What Actually Causes Them", category: "new-england", published: true, relatedServiceSlugs: ["roofing", "gutters"], relatedCitySlugs: [], state: "ALL" },
   { id: 4, title: "Best Roofing Contractors in Providence RI", category: "location-feature", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: ["providence"], state: "RI" },
   { id: 5, title: "Best Roofing Contractors in Worcester MA", category: "location-feature", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: ["worcester"], state: "MA" },
   { id: 6, title: "Best Roofing Contractors in Hartford CT", category: "location-feature", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: ["hartford"], state: "CT" },
   { id: 7, title: "How Much Does a Roof Replacement Cost in Massachusetts", category: "cost-guide", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: [], state: "MA" },
-  { id: 8, title: "Do Gutter Guards Actually Work Under New England Leaf Load", category: "comparison", published: false, relatedServiceSlugs: ["gutters"], relatedCitySlugs: [], state: "ALL" },
+  { id: 8, title: "Do Gutter Guards Actually Work Under New England Leaf Load", category: "comparison", published: true, relatedServiceSlugs: ["gutters"], relatedCitySlugs: [], state: "ALL" },
   { id: 9, title: "How Much Does a Roof Replacement Cost in Rhode Island", category: "cost-guide", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: [], state: "RI" },
   { id: 10, title: "How Much Does a Roof Replacement Cost in Connecticut", category: "cost-guide", published: false, relatedServiceSlugs: ["roofing"], relatedCitySlugs: [], state: "CT" },
 
   // === TIER 2: differentiating New England content and core listicles ===
-  { id: 11, title: "Triple Decker Window Replacement: What 40 to 60 Openings Actually Costs", category: "new-england", published: false, relatedServiceSlugs: ["windows"], relatedCitySlugs: ["worcester", "providence", "lowell"], state: "ALL" },
-  { id: 12, title: "How Salt Air Damages Siding and Fasteners on Coastal New England Homes", category: "new-england", published: false, relatedServiceSlugs: ["siding", "roofing"], relatedCitySlugs: ["newport", "gloucester", "old-saybrook"], state: "ALL" },
+  { id: 11, title: "Triple Decker Window Replacement: What 40 to 60 Openings Actually Costs", category: "new-england", published: true, relatedServiceSlugs: ["windows"], relatedCitySlugs: ["worcester", "providence", "lowell"], state: "ALL" },
+  { id: 12, title: "How Salt Air Damages Siding and Fasteners on Coastal New England Homes", category: "new-england", published: true, relatedServiceSlugs: ["siding", "roofing"], relatedCitySlugs: ["newport", "gloucester", "old-saybrook"], state: "ALL" },
   { id: 13, title: "Best Bathroom Remodelers in Worcester MA", category: "location-feature", published: false, relatedServiceSlugs: ["bathroom-remodeling"], relatedCitySlugs: ["worcester"], state: "MA" },
   { id: 14, title: "Best Window Replacement Companies in Providence RI", category: "location-feature", published: false, relatedServiceSlugs: ["windows"], relatedCitySlugs: ["providence"], state: "RI" },
-  { id: 15, title: "Vinyl vs Fiber Cement Siding in New England: The Honest Cost Comparison", category: "comparison", published: false, relatedServiceSlugs: ["siding"], relatedCitySlugs: [], state: "ALL" },
+  { id: 15, title: "Vinyl vs Fiber Cement Siding in New England: The Honest Cost Comparison", category: "comparison", published: true, relatedServiceSlugs: ["siding"], relatedCitySlugs: [], state: "ALL" },
   { id: 16, title: "Bathroom Remodel Cost in Massachusetts", category: "cost-guide", published: false, relatedServiceSlugs: ["bathroom-remodeling"], relatedCitySlugs: [], state: "MA" },
   { id: 17, title: "Window Replacement Cost in Massachusetts", category: "cost-guide", published: false, relatedServiceSlugs: ["windows"], relatedCitySlugs: [], state: "MA" },
   { id: 18, title: "Best Siding Contractors in Springfield MA", category: "location-feature", published: false, relatedServiceSlugs: ["siding"], relatedCitySlugs: ["springfield"], state: "MA" },

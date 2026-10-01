@@ -11,6 +11,7 @@ import { LocalLedger } from "@/components/sections/LocalLedger";
 import { ProseBody } from "@/components/sections/ProseBody";
 import { InlineLeadForm } from "@/components/forms/InlineLeadForm";
 import { CityServiceTable } from "@/components/sections/CostComparison";
+import { ServiceLinkBlock } from "@/components/sections/ServiceLinkBlock";
 import { SHARED } from "@/lib/content";
 import { SERVICES } from "@/lib/data/services";
 import { getLiveCities } from "@/lib/phase";
@@ -117,7 +118,7 @@ export default function CityHubPage({
           <LocalLedger fields={ledger} caption={SHARED.costDisclaimer} />
 
           <div className="grid gap-12 py-14 pb-section lg:grid-cols-12 lg:gap-16 lg:py-16">
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8">
               <ProseBody paragraphs={body} />
               <CityServiceTable city={city} />
               <InlineLeadForm prefill={{ city: city.city, state: city.state }} />
@@ -178,6 +179,20 @@ export default function CityHubPage({
                 </nav>
               </div>
             </aside>
+          </div>
+
+          <div className="pb-section">
+            <ServiceLinkBlock
+              heading={`Every service available in ${city.city}`}
+              intro={`All seven categories have their own page for ${city.city}, with the housing stock, the permitting authority, and a cost range for this town.`}
+              items={SERVICES.map((service) => ({
+                slug: service.slug,
+                name: service.name,
+                href: getCityServiceUrl(city, service.slug),
+                blurb: service.description.split(". ")[0].replace(/\.$/, "") + ".",
+                meta: serviceCostBand(city, service.slug),
+              }))}
+            />
           </div>
         </Container>
       </main>

@@ -14,7 +14,7 @@ import { Header } from "@/components/layout/Header";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { CityLinkBlock } from "@/components/sections/CityLinkBlock";
+import { LocationDirectory } from "@/components/sections/LocationDirectory";
 import { PriceDrivers } from "@/components/sections/PriceDrivers";
 import { RegionalCostTable } from "@/components/sections/CostComparison";
 import { MaterialTable } from "@/components/sections/MaterialTable";
@@ -99,7 +99,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
 
         <Container width="wide">
           <div className="grid gap-12 py-14 lg:grid-cols-12 lg:gap-16 lg:py-20">
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8">
               <div className="prose-body">
                 {copy.sections.map((section) => (
                   <section key={section.heading}>
@@ -200,11 +200,12 @@ export default function ServiceHubPage({ params }: { params: { service: string }
             </aside>
           </div>
 
-          <CityLinkBlock
+          <LocationDirectory
             cities={cities}
             serviceSlug={service.slug}
-            heading={`${service.name} by town`}
-            intro={`Each town has its own ${service.shortName.toLowerCase()} page with the housing stock, the permitting authority, and a cost range for that market specifically.`}
+            serviceName={service.shortName}
+            heading={`${service.name} across all three states`}
+            intro={`${service.name} is covered in Rhode Island, Massachusetts, and Connecticut. Pick a state for the local overview, or open a town to see the housing stock, the permitting authority, and a cost range for that market.`}
           />
           <div className="pb-section" />
         </Container>

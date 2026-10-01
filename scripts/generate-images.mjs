@@ -1,7 +1,7 @@
 /**
  * generate-images.mjs
  *
- * Generates the 41 image slots in docs/image-prompts.md through the Gemini
+ * Generates the 27 image slots in docs/image-prompts.md through the Gemini
  * image model, writing raw output to .image-staging/.
  *
  * Run `npm run images:process` afterwards to resize, crop, and convert to

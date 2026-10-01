@@ -76,17 +76,6 @@ export const BLOG_IMAGES: Record<string, ImageName> = {
   "entry-doors": "blog-entry-doors",
   gutters: "blog-gutters",
 };
-
-/** Gallery slots grouped by service, two each. */
-export const GALLERY_BY_SERVICE: Record<string, ImageName[]> = {
-  roofing: ["gallery-roofing-triple-decker", "gallery-roofing-cape-cod"],
-  windows: ["gallery-windows-victorian", "gallery-windows-colonial"],
-  siding: ["gallery-siding-coastal-cottage", "gallery-siding-farmhouse"],
-  "bathroom-remodeling": ["gallery-bathroom-tub-to-shower", "gallery-bathroom-walk-in"],
-  "kitchen-remodeling": ["gallery-kitchen-triple-decker", "gallery-kitchen-colonial"],
-  "entry-doors": ["gallery-door-federal", "gallery-door-ranch"],
-  gutters: ["gallery-gutters-victorian", "gallery-gutters-colonial"],
-};
 `;
 
 await writeFile("lib/images.ts", out);

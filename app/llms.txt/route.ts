@@ -1,8 +1,8 @@
 import { SITE } from "@/lib/content";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, absoluteUrl } from "@/lib/seo";
 import { SERVICES } from "@/lib/data/services";
 import { TOOLS } from "@/lib/data/tools";
-import { BLOG_TOPICS } from "@/lib/data/blog-topics";
+import { getPosts } from "@/lib/sanity/client";
 import { getLiveCities } from "@/lib/phase";
 import { STATE_NAMES, STATE_SLUGS, getCityUrl, type StateCode } from "@/lib/data/cities";
 
@@ -20,7 +20,7 @@ import { STATE_NAMES, STATE_SLUGS, getCityUrl, type StateCode } from "@/lib/data
  */
 export const dynamic = "force-static";
 
-export function GET() {
+export async function GET() {
   const live = getLiveCities();
   const states: StateCode[] = ["RI", "MA", "CT"];
 
@@ -92,8 +92,8 @@ export function GET() {
   }
 
   lines.push("", "## Guides", "");
-  for (const topic of BLOG_TOPICS.slice(0, 10)) {
-    lines.push(`- ${topic.title}`);
+  for (const post of (await getPosts(10))) {
+    lines.push(`- [${post.title}](${absoluteUrl(`/blog/${post.slug}`)})`);
   }
 
   lines.push(

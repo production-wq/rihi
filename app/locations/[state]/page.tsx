@@ -9,6 +9,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CityLinkBlock } from "@/components/sections/CityLinkBlock";
+import { ServiceLinkBlock } from "@/components/sections/ServiceLinkBlock";
 import { InlineLeadForm } from "@/components/forms/InlineLeadForm";
 import { STATE_HUB } from "@/lib/copy/state-hub";
 import { SERVICES } from "@/lib/data/services";
@@ -33,6 +34,11 @@ const TOTALS: Record<StateCode, { count: number; unit: string }> = {
   MA: { count: 351, unit: "cities and towns" },
   CT: { count: 169, unit: "municipalities" },
 };
+
+function firstSentence(text: string): string {
+  const first = text.split(". ")[0];
+  return first.endsWith(".") ? first : `${first}.`;
+}
 
 export function generateStaticParams() {
   return Object.values(STATE_SLUGS).map((state) => ({ state }));
@@ -84,7 +90,7 @@ export default function StateHubPage({ params }: { params: { state: string } }) 
 
         <Container width="wide">
           <div className="grid gap-12 py-14 lg:grid-cols-12 lg:gap-16 lg:py-20">
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-8">
               <div className="prose-body">
                 {copy.sections.map((section) => (
                   <section key={section.heading}>
@@ -157,6 +163,19 @@ export default function StateHubPage({ params }: { params: { state: string } }) 
               </div>
             </section>
           )}
+
+          <div className="pb-section">
+            <ServiceLinkBlock
+              heading={`Services available in ${STATE_NAMES[code]}`}
+              intro={`All seven categories are covered across ${STATE_NAMES[code]}. Each service page explains the work, the materials, and what it costs in this market.`}
+              items={SERVICES.map((service) => ({
+                slug: service.slug,
+                name: service.name,
+                href: `/services/${service.slug}/`,
+                blurb: firstSentence(service.description),
+              }))}
+            />
+          </div>
         </Container>
       </main>
 

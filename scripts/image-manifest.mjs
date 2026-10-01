@@ -1,7 +1,7 @@
 /**
  * image-manifest.mjs
  *
- * The 41 image slots from docs/image-prompts.md, transcribed verbatim.
+ * The 27 image slots from docs/image-prompts.md, transcribed verbatim.
  *
  * Filenames, folders, aspect ratios, prompts, and alt text all come from that
  * document. Do not invent a slot here. Add it to docs/image-prompts.md first,
@@ -194,148 +194,6 @@ export const IMAGE_SLOTS = [
       "A white aluminium gutter and the corner turn of a downspout against grey clapboard siding, photographed from below at an angle. Overcast light after rain, no people.",
   },
 
-  // ------------------------------------------------------------- GALLERY (14)
-  {
-    name: "gallery-roofing-triple-decker",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A three-story triple decker with a newly shingled roof and a lower flat roof over the rear ell.",
-    prompt:
-      "A completed asphalt shingle roof on a three-story New England triple decker, photographed from across the street. New dark grey architectural shingles on the main roof, a visible lower flat roof section over the rear ell, three stacked porches on the front, grey clapboard siding. Narrow side yard, neighbouring house close by. Overcast light, no people.",
-  },
-  {
-    name: "gallery-roofing-cape-cod",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A Cape Cod house with two shed dormers and a newly shingled charcoal roof.",
-    prompt:
-      "A completed roof on a Cape Cod style house, one and a half stories, low eaves, two shed dormers, weathered cedar shingle siding, new charcoal asphalt shingles, a central brick chimney. Sandy soil and scrub pine at the edges. Overcast coastal light, no people.",
-  },
-  {
-    name: "gallery-windows-victorian",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A Victorian house facade with newly installed tall double hung windows and a first floor bay.",
-    prompt:
-      "The facade of a New England Victorian with newly installed double hung windows, tall narrow openings with decorative headers, a bay window on the first floor, painted trim in two colours. Mature maple to one side. Overcast light, no people.",
-  },
-  {
-    name: "gallery-windows-colonial",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A centre chimney colonial with new twelve-over-twelve style windows and a fieldstone wall in front.",
-    prompt:
-      "The front of a centre chimney colonial with twelve-over-twelve style double hung windows in white clapboard, five windows across the second floor and two flanking a central door below. A fieldstone wall in the foreground. Overcast light, no people.",
-  },
-  {
-    name: "gallery-siding-coastal-cottage",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A coastal cottage with newly installed cedar shingle siding and a screened porch, beach grass in front.",
-    prompt:
-      "A shingled coastal cottage with newly installed cedar shingle siding still light in colour, white trim, a screened porch, and beach grass and a weathered fence in the foreground. Flat grey coastal light, no people.",
-  },
-  {
-    name: "gallery-siding-farmhouse",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A farmhouse with new white lap siding and black shutters, with a rear ell and a barn behind.",
-    prompt:
-      "A New England farmhouse with new white fiber cement lap siding and black shutters, a wide ell running off the back, a stone foundation, and a barn partly visible behind. Bare trees and open field. Overcast light, no people.",
-  },
-  {
-    name: "gallery-bathroom-tub-to-shower",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A tub to shower conversion with white subway tile, a low curb, and a recessed niche.",
-    prompt:
-      "A finished tub to shower conversion in a small bathroom, white subway tile to the ceiling, a low tiled curb, a clear glass panel, a recessed niche, and a chrome rain head. A small double hung window with painted trim at the end wall. Daylight, no people, no staging.",
-  },
-  {
-    name: "gallery-bathroom-walk-in",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A barrier free walk-in shower with grey tile, a linear drain, a bench, and a grab bar.",
-    prompt:
-      "A finished barrier free walk-in shower with large format grey tile, a linear drain, a folding bench, and a grab bar, in a bathroom with wide plank floors and a painted wood door. Daylight from a side window, no people.",
-  },
-  {
-    name: "gallery-kitchen-triple-decker",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A compact renovated kitchen with white shaker cabinets and a window looking onto a close neighbouring house.",
-    prompt:
-      "A renovated kitchen in a working class New England multi-family, compact, with white shaker cabinets, a butcher block counter, open shelving on one wall, and a double hung window over the sink looking onto a close neighbouring house. Daylight, no people.",
-  },
-  {
-    name: "gallery-kitchen-colonial",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A renovated colonial kitchen with cabinets built around a plastered chimney chase and exposed beams.",
-    prompt:
-      "A renovated kitchen in an older colonial, with a large plastered chimney chase in the middle of one wall, cabinets built around it, soapstone counters, wide plank floors, and exposed hand-hewn ceiling beams. Daylight from two windows, no people.",
-  },
-  {
-    name: "gallery-door-federal",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A black Federal style entry door with a fanlight and sidelights, set in white clapboard.",
-    prompt:
-      "A newly installed Federal style entry, a black painted six panel door with a fanlight above and sidelights either side, set in white clapboard with granite steps. Overcast light, no people.",
-  },
-  {
-    name: "gallery-door-ranch",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "A new half-light fibreglass entry door on a mid-century ranch with brick and painted siding.",
-    prompt:
-      "A newly installed fibreglass entry door with a half-light on a mid-century New England ranch, brick veneer to one side, painted wood siding to the other, a simple concrete stoop, foundation shrubs. Overcast light, no people.",
-  },
-  {
-    name: "gallery-gutters-victorian",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "New white seamless gutter following the complex roofline of a Victorian house.",
-    prompt:
-      "Newly installed white seamless gutter running along the complex roofline of a New England Victorian, following a change in roof plane, with a downspout at the corner. Decorative brackets and painted trim visible. Overcast light, no people.",
-  },
-  {
-    name: "gallery-gutters-colonial",
-    folder: "gallery",
-    ar: "4:3",
-    w: 1200,
-    h: 900,
-    alt: "New white six inch gutter along the long eave of a colonial house after rain.",
-    prompt:
-      "Newly installed white six inch gutter along the long eave of a colonial with a steep roof, a downspout at each end, dark grey shingles above and white clapboard below, wet from recent rain. Overcast light, no people.",
-  },
-
   // ----------------------------------------------------------------- ABOUT (1)
   {
     name: "about-jobsite",
@@ -461,4 +319,4 @@ export function fullPrompt(slot) {
   return slot.prompt + SHARED_SUFFIX;
 }
 
-export const EXPECTED_SLOT_COUNT = 41;
+export const EXPECTED_SLOT_COUNT = 27;

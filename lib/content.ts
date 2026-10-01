@@ -275,7 +275,6 @@ export const FOOTER = {
         { label: "About", href: "/about/" },
         { label: "Cost Tools", href: "/tools/" },
         { label: "Guides", href: "/blog/" },
-        { label: "Project Gallery", href: "/gallery/" },
         { label: "Get Free Quotes", href: "/free-estimate/" },
       ],
     },
@@ -399,14 +398,6 @@ export const BLOG_HUB = {
   subheadline:
     "Cost breakdowns, material comparisons, and the specific problems that come with New England housing stock: ice dams, salt air, board sheathing, historic district rules, and 100 year old window openings that are not square.",
   emptyState: "No posts yet. The first ones go up shortly.",
-} as const;
-
-export const GALLERY = {
-  headline: "Project gallery",
-  subheadline:
-    "Completed work on New England housing: triple deckers, capes, colonials, Victorians, and coastal cottages.",
-  placeholder:
-    "We are collecting photos from contractors in the network now. Real projects on real houses in these three states go here, with the town and the type of house named. Nothing stock, nothing borrowed.",
 } as const;
 
 export const ABOUT = {

@@ -1,3 +1,4 @@
+import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -17,8 +18,8 @@ import { STATE_NAMES, STATE_SLUGS, type StateCode } from "@/lib/data/cities";
 /**
  * Blog post.
  *
- * Renders from Sanity. Where Sanity is not configured the route generates no
- * params and every path 404s, which is correct: there are no posts.
+ * Renders from Sanity, plus the posts that ship in lib/data/blog-posts.ts. A
+ * slug that matches neither 404s.
  *
  * Link graph, per CLAUDE.md section 10: to the primary service hub, to the
  * relevant state hub, and to sibling posts. The in-body service link belongs in
@@ -27,6 +28,35 @@ import { STATE_NAMES, STATE_SLUGS, type StateCode } from "@/lib/data/cities";
  */
 
 export const revalidate = 300;
+
+/**
+ * Inline formatting for post bodies: [text](/internal/path/) becomes a link and
+ * **text** becomes bold. Only links that start with a single slash are
+ * rendered as links, so a body can never inject an external URL.
+ */
+function renderInline(text: string): ReactNode[] {
+  const pattern = /\[([^\]]+)\]\((\/[^)\s]*)\)|\*\*([^*]+)\*\*/g;
+  const nodes: ReactNode[] = [];
+  let last = 0;
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > last) nodes.push(text.slice(last, match.index));
+    if (match[1] !== undefined && match[2] !== undefined && !match[2].startsWith("//")) {
+      nodes.push(
+        <Link key={match.index} href={match[2]}>
+          {match[1]}
+        </Link>
+      );
+    } else if (match[3] !== undefined) {
+      nodes.push(<strong key={match.index}>{match[3]}</strong>);
+    } else {
+      nodes.push(match[0]);
+    }
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes.map((n, i) => <Fragment key={i}>{n}</Fragment>);
+}
 
 export async function generateStaticParams() {
   const posts = await getPosts(200);
@@ -107,11 +137,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <div className="prose-body">
               {(post.body ?? "").split(/\n\n+/).map((block, i) =>
                 block.startsWith("## ") ? (
-                  <h2 key={i}>{block.replace(/^##\s+/, "")}</h2>
+                  <h2 key={i}>{renderInline(block.replace(/^##\s+/, ""))}</h2>
                 ) : block.startsWith("### ") ? (
-                  <h3 key={i}>{block.replace(/^###\s+/, "")}</h3>
+                  <h3 key={i}>{renderInline(block.replace(/^###\s+/, ""))}</h3>
                 ) : (
-                  <p key={i}>{block}</p>
+                  <p key={i}>{renderInline(block)}</p>
                 )
               )}
             </div>
