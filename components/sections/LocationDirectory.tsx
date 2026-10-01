@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { City, StateCode } from "@/lib/data/cities";
 import { STATE_NAMES, STATE_SLUGS, getCityUrl, getCityServiceUrl } from "@/lib/data/cities";
+import { TownChip } from "@/components/ui/TownChip";
 
 const STATES: StateCode[] = ["RI", "MA", "CT"];
 
@@ -79,14 +80,12 @@ export function LocationDirectory({
                 </h3>
                 <p className="font-mono text-mono uppercase text-ink-muted">
                   {total.count} {total.unit}
-                  {inState.length > 0 && inState.length < total.count
-                    ? `  ·  ${inState.length} live`
-                    : ""}
+                  {inState.length > 0 ? `  ·  ${inState.length} town pages` : ""}
                 </p>
               </div>
 
               {grouped.length ? (
-                <details className="group mt-5">
+                <details className="group mt-5" open={inState.length <= 60}>
                   <summary className="inline-flex min-h-[44px] cursor-pointer list-none items-center gap-2 text-body-sm text-action transition-colors duration-micro ease-out hover:text-cranberry [&::-webkit-details-marker]:hidden">
                     <span className="group-open:hidden">
                       Show {inState.length} {inState.length === 1 ? "town" : "towns"}
@@ -97,19 +96,18 @@ export function LocationDirectory({
                     {grouped.map(([region, list]) => (
                       <div key={region} className="bg-surface-raised p-5">
                         <h4 className="font-mono text-mono uppercase text-ink-muted">{region}</h4>
-                        <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                        <ul className="mt-3 flex flex-wrap gap-2">
                           {list.map((city) => (
                             <li key={`${city.state}-${city.slug}`}>
-                              <Link
+                              <TownChip
                                 href={
                                   serviceSlug
                                     ? getCityServiceUrl(city, serviceSlug)
                                     : getCityUrl(city)
                                 }
-                                className="link-rise text-body-sm text-ink-body transition-colors duration-micro ease-out hover:text-cranberry"
                               >
                                 {city.city}
-                              </Link>
+                              </TownChip>
                             </li>
                           ))}
                         </ul>
@@ -117,12 +115,7 @@ export function LocationDirectory({
                     ))}
                   </div>
                 </details>
-              ) : (
-                <p className="mt-4 max-w-prose text-body-sm text-ink-body">
-                  Town pages for {STATE_NAMES[state]} are rolling out in stages. The state page
-                  covers the whole state in the meantime.
-                </p>
-              )}
+              ) : null}
             </div>
           );
         })}

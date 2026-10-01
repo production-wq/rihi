@@ -154,12 +154,18 @@ export default function StateHubPage({ params }: { params: { state: string } }) 
           ) : (
             <section className="py-section">
               <div className="max-w-prose rounded-card border-hairline border-shell bg-surface-sunken p-7">
-                <h2 className="text-display-sm">Town pages are rolling out</h2>
+                <h2 className="text-display-sm">Tell us your town</h2>
                 <p className="mt-3 text-body text-ink-body">
-                  Coverage across all {total.count} {total.unit} in {STATE_NAMES[code]} is being
-                  added in stages. If your town does not have a page yet, use the quote form and
-                  we will handle it directly.
+                  Every one of the {total.count} {total.unit} in {STATE_NAMES[code]} is covered.
+                  Send us the town and the project, and we match it with contractors who work
+                  there. Quotes are free, with no obligation to hire anyone.
                 </p>
+                <Link
+                  href={`/free-estimate/?state=${code}`}
+                  className="mt-5 inline-flex min-h-[44px] items-center rounded-card bg-cranberry px-6 text-body-sm font-medium text-white transition-colors duration-micro ease-out hover:bg-cranberry-deep"
+                >
+                  Get free quotes in {STATE_NAMES[code]}
+                </Link>
               </div>
             </section>
           )}

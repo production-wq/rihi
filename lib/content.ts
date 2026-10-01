@@ -220,11 +220,11 @@ export const NAV = {
     {
       label: "Locations",
       href: "/locations/",
-      overview: "All 559 cities and towns",
+      overview: "Browse every location",
       children: [
-        { label: "Rhode Island", href: "/locations/rhode-island/", blurb: "39 municipalities" },
-        { label: "Massachusetts", href: "/locations/massachusetts/", blurb: "351 cities and towns" },
-        { label: "Connecticut", href: "/locations/connecticut/", blurb: "169 municipalities" },
+        { label: "Rhode Island", href: "/locations/rhode-island/", blurb: "Town pages across the state" },
+        { label: "Massachusetts", href: "/locations/massachusetts/", blurb: "Cities, towns, and regions" },
+        { label: "Connecticut", href: "/locations/connecticut/", blurb: "Cities, towns, and regions" },
       ],
     },
     {
@@ -264,9 +264,9 @@ export const FOOTER = {
     {
       heading: "States Covered",
       links: [
-        { label: "Rhode Island, 39 municipalities", href: "/locations/rhode-island/" },
-        { label: "Massachusetts, 351 municipalities", href: "/locations/massachusetts/" },
-        { label: "Connecticut, 169 municipalities", href: "/locations/connecticut/" },
+        { label: "Rhode Island", href: "/locations/rhode-island/" },
+        { label: "Massachusetts", href: "/locations/massachusetts/" },
+        { label: "Connecticut", href: "/locations/connecticut/" },
       ],
     },
     {

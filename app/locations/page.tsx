@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Header } from "@/components/layout/Header";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
-import { LocationDirectory } from "@/components/sections/LocationDirectory";
+import { CityLinkBlock } from "@/components/sections/CityLinkBlock";
 import { getLiveCities } from "@/lib/phase";
 import { STATE_HUB } from "@/lib/copy/state-hub";
 import { STATE_NAMES, STATE_SLUGS, type StateCode } from "@/lib/data/cities";
@@ -23,9 +23,9 @@ const TOTALS: Record<StateCode, { count: number; unit: string }> = {
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Every city and town in Rhode Island, Massachusetts, and Connecticut",
+  title: "Locations across Rhode Island, Massachusetts, and Connecticut",
   description:
-    "All 559 municipalities across three states, each with its own page covering the local housing stock, the permitting authority, and real cost ranges for that market.",
+    "State overviews and individual town pages for Rhode Island, Massachusetts, and Connecticut, each with local housing stock, permit authority, and cost ranges.",
   path: "/locations/",
 });
 
@@ -39,8 +39,8 @@ export default function LocationsIndexPage() {
       <main id="main">
         <PageHero
           eyebrow="Locations"
-          title="559 cities and towns, one page each"
-          lede="A roof on a Worcester three-decker and a roof on a Wellesley garrison colonial are not the same job. Every municipality gets its own page, with the housing stock that is actually there, the permitting authority, and a cost range for that market."
+          title="Every location we cover"
+          lede="A roof on a Worcester three-decker and a roof on a Wellesley garrison colonial are not the same job. Pick a state for the regional picture, or go straight to your town for the housing stock that is actually there, the permitting authority, and a cost range for that market."
           crumbs={CRUMBS}
         />
 
@@ -64,7 +64,7 @@ export default function LocationsIndexPage() {
                   <p className="mt-4 flex-1 text-body-sm text-ink-body">{copy.lede}</p>
                   <p className="mt-6 border-t-hairline border-shell pt-4 font-mono text-mono uppercase text-ink-muted">
                     {total.count} {total.unit}
-                    {liveCount > 0 && liveCount < total.count ? `  ·  ${liveCount} live` : ""}
+                    {liveCount > 0 ? `  ·  ${liveCount} town pages` : ""}
                   </p>
                 </Link>
               );
@@ -89,13 +89,15 @@ export default function LocationsIndexPage() {
             </div>
           </section>
 
-          <div className="pb-section">
-            <LocationDirectory
-              cities={live}
-              heading="Every location we cover"
-              intro="The three state pages are live now. Towns with their own page are listed under each state, grouped by region, and every one of them links to all seven services."
-            />
-          </div>
+          {live.length ? (
+            <div className="pb-section">
+              <CityLinkBlock
+                cities={live}
+                heading="Find your town"
+                intro="Every town below has its own page, and every town page links to all seven services."
+              />
+            </div>
+          ) : null}
         </Container>
       </main>
 
@@ -103,7 +105,7 @@ export default function LocationsIndexPage() {
         data={graph(
           collectionPageSchema({
             name: "Locations covered across Rhode Island, Massachusetts, and Connecticut",
-            description: "All 559 municipalities across three states.",
+            description: "State overviews and town pages across three states.",
             path: "/locations/",
           }),
           breadcrumbSchema(CRUMBS)
