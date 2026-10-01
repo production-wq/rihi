@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { LocalLedger } from "@/components/sections/LocalLedger";
 import { ProseBody } from "@/components/sections/ProseBody";
 import { InlineLeadForm } from "@/components/forms/InlineLeadForm";
+import { CityServiceTable } from "@/components/sections/CostComparison";
 import { SHARED } from "@/lib/content";
 import { SERVICES } from "@/lib/data/services";
 import { getLiveCities } from "@/lib/phase";
@@ -118,6 +119,7 @@ export default function CityHubPage({
           <div className="grid gap-12 py-14 pb-section lg:grid-cols-12 lg:gap-16 lg:py-16">
             <div className="lg:col-span-8">
               <ProseBody paragraphs={body} />
+              <CityServiceTable city={city} />
               <InlineLeadForm prefill={{ city: city.city, state: city.state }} />
             </div>
 

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { NAV, SITE } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
 import { MobileNav } from "./MobileNav";
+import { NavDropdown } from "./NavDropdown";
 
 /**
  * Site header.
@@ -58,12 +59,27 @@ export function Header({ solid = false }: { solid?: boolean }) {
           <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
             {NAV.primary.map((item) => {
               const active = pathname.startsWith(item.href);
+
+              if ("children" in item) {
+                return (
+                  <NavDropdown
+                    key={item.href}
+                    label={item.label}
+                    href={item.href}
+                    overview={item.overview}
+                    children={item.children}
+                    transparent={!opaque}
+                    active={active}
+                  />
+                );
+              }
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`link-rise text-body-sm transition-colors duration-micro ease-out ${
+                  className={`link-rise inline-flex min-h-[44px] items-center text-body-sm transition-colors duration-micro ease-out ${
                     opaque
                       ? active
                         ? "text-cranberry"

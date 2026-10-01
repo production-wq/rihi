@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { SERVICES, getServiceBySlug } from "@/lib/data/services";
 import { SERVICE_HUB } from "@/lib/copy/service-hub";
 import { SERVICE_COST } from "@/lib/data/cost-data";
+import { serviceCostBand } from "@/lib/copy/ledger";
 import { getLiveCities } from "@/lib/phase";
 import { img, SERVICE_IMAGES } from "@/lib/images";
 import { buildMetadata, metaTemplates } from "@/lib/seo";
@@ -14,6 +15,9 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CityLinkBlock } from "@/components/sections/CityLinkBlock";
+import { PriceDrivers } from "@/components/sections/PriceDrivers";
+import { RegionalCostTable } from "@/components/sections/CostComparison";
+import { MaterialTable } from "@/components/sections/MaterialTable";
 import { InlineLeadForm } from "@/components/forms/InlineLeadForm";
 
 /**
@@ -53,6 +57,26 @@ export default function ServiceHubPage({ params }: { params: { service: string }
 
   const cities = getLiveCities();
   const band = SERVICE_COST[service.slug];
+
+  /*
+   * One sample town per distinct region, cheapest first, capped at eight. The
+   * table is showing the geographic spread rather than listing towns, so one
+   * representative per market is the honest shape. It falls back silently to
+   * nothing when no city is live, which is correct at ACTIVE_PHASE=0.
+   */
+  const seenRegions = new Set<string>();
+  const costSamples = cities
+    .filter((c) => {
+      if (seenRegions.has(c.region)) return false;
+      seenRegions.add(c.region);
+      return true;
+    })
+    .sort(
+      (a, b) =>
+        Number(serviceCostBand(a, service.slug).replace(/[^0-9]/g, "").slice(0, 6)) -
+        Number(serviceCostBand(b, service.slug).replace(/[^0-9]/g, "").slice(0, 6))
+    )
+    .slice(0, 8);
   const others = SERVICES.filter((s) => s.slug !== service.slug);
 
   const crumbs = [
@@ -87,7 +111,17 @@ export default function ServiceHubPage({ params }: { params: { service: string }
                 ))}
               </div>
 
+              <MaterialTable serviceSlug={service.slug} serviceName={service.name} />
+
+              <PriceDrivers serviceSlug={service.slug} serviceName={service.name} />
+
               <InlineLeadForm prefill={{ service: service.slug }} />
+
+              <RegionalCostTable
+                serviceSlug={service.slug}
+                serviceName={service.name}
+                samples={costSamples}
+              />
 
               <FaqSection faqs={[...copy.faqs]} />
             </div>

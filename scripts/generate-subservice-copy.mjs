@@ -98,17 +98,20 @@ ${RULES}
 
 STRUCTURE. Produce:
   - "lede": one paragraph, 2 to 3 sentences, opening with a concrete fact about this specific work. This sits under the H1.
-  - "sections": 4 or 5 sections, each with a heading and 1 to 3 paragraphs.
-  - "faqs": exactly 4 questions with answers of 2 to 4 sentences each.
+  - "sections": 7 or 8 sections, each with a heading and 2 to 4 paragraphs.
+  - "faqs": 5 or 6 questions with answers of 3 to 5 sentences each.
 
-Total across everything: 650 to 900 words. This page is NARROW AND TECHNICAL. It is not an overview of ${f.serviceName}, it is specifically about ${f.subName}.
+Total across everything: 1,200 to 1,600 words. This page is NARROW AND TECHNICAL. It is not an overview of ${f.serviceName}, it is specifically about ${f.subName}, and it should be the most thorough thing published on that narrow subject for this region.
 
 Cover:
-  - What this specific work actually involves, step by step, technically.
+  - What this specific work actually involves, step by step, technically, in the order it happens.
+  - The materials or methods available for it, compared honestly on cost, life, and where each one is the right answer.
   - When a homeowner needs THIS versus the alternative. Name the alternative and say plainly when it is the better answer.
-  - What it costs in this market and what drives that number.
-  - How long it takes, in working days.
+  - What it costs in this market, what drives that number, and which line items carry the variance.
+  - How long it takes in working days, and what extends it.
   - What goes wrong when it is done badly, specifically, with the failure mechanism.
+  - How this work differs across New England housing stock: name at least three specific building types and what changes on each.
+  - What to ask for in a quote, and what a thin quote leaves out.
 
 Headings must be specific to ${f.subName}. Do not write a heading that would fit any other page.`;
 }
@@ -141,8 +144,8 @@ function violations(doc) {
   for (const re of claims) if (re.test(text)) found.push(`prohibited claim ${re}`);
 
   const words = raw.split(/\s+/).filter(Boolean).length;
-  if (words < 600) found.push(`below the 600 word floor: ${words}`);
-  if (doc.faqs.length < 3) found.push(`only ${doc.faqs.length} FAQs`);
+  if (words < 1000) found.push(`below the 1,000 word floor: ${words}`);
+  if (doc.faqs.length < 5) found.push(`only ${doc.faqs.length} FAQs`);
 
   return found;
 }

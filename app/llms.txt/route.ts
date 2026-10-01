@@ -4,7 +4,7 @@ import { SERVICES } from "@/lib/data/services";
 import { TOOLS } from "@/lib/data/tools";
 import { BLOG_TOPICS } from "@/lib/data/blog-topics";
 import { getLiveCities } from "@/lib/phase";
-import { STATE_NAMES, STATE_SLUGS, type StateCode } from "@/lib/data/cities";
+import { STATE_NAMES, STATE_SLUGS, getCityUrl, type StateCode } from "@/lib/data/cities";
 
 /**
  * llms.txt, for AI crawler discovery. Required by CLAUDE.md section 9.
@@ -46,6 +46,45 @@ export function GET() {
       `- [${STATE_NAMES[state]}](${SITE_URL}/locations/${STATE_SLUGS[state]}/): housing stock by region, state building code, permitting, and energy programs.${count ? ` ${count} town pages live.` : ""}`
     );
   }
+
+  /*
+   * Town pages, listed in full.
+   *
+   * These are the bulk of the site and the part a model is most likely to be
+   * asked about, since the queries this market actually carries are shaped like
+   * "roofers in Worcester" rather than "roofing in Massachusetts". Each entry
+   * carries the housing stock note, because that is the fact that makes the
+   * page worth citing rather than the URL.
+   *
+   * Grouped by state and sourced from getLiveCities(), so a town outside the
+   * current phase never appears here any more than it appears in the sitemap.
+   */
+  for (const state of states) {
+    const inState = live.filter((c) => c.state === state);
+    if (!inState.length) continue;
+
+    lines.push("", `### ${STATE_NAMES[state]} towns`, "");
+    for (const city of inState) {
+      // Take whole sentences until the summary carries real information.
+      // Cranston's note opens "Two distinct halves.", which is true and
+      // useless on its own, so a flat first-sentence cut produces entries a
+      // model cannot do anything with.
+      const sentences = city.homeStyleNote.split(/(?<=\.)\s/);
+      let note = "";
+      for (const sentence of sentences) {
+        note = note ? `${note} ${sentence}` : sentence;
+        if (note.length >= 90) break;
+      }
+      lines.push(`- [${city.city}, ${city.state}](${SITE_URL}${getCityUrl(city)}): ${note}`);
+    }
+  }
+
+  lines.push(
+    "",
+    "### Town and service pages",
+    "",
+    `Every town above has a dedicated page for each of the seven services, at ${SITE_URL}/locations/{state}/{town}/{service}/. Each carries the local housing stock, the municipal permitting authority, the ZIP codes covered, and a cost range computed for that specific market. For example: ${SITE_URL}/locations/rhode-island/providence/roofing/`
+  );
 
   lines.push("", "## Cost tools", "");
   for (const tool of TOOLS) {

@@ -138,6 +138,23 @@ export function LeadHandoff({
   );
 }
 
+/**
+ * A single labelled control.
+ *
+ * -----------------------------------------------------------------------------
+ * WHY THE FLEX COLUMN AND mt-auto
+ * -----------------------------------------------------------------------------
+ * Help text varies from zero to three lines across the fields in a row. With a
+ * plain block layout the label and help stack from the top, so a field with
+ * three lines of help pushes its control three lines lower than the field
+ * beside it, and the controls in a row never line up.
+ *
+ * Grid items stretch to the tallest in their row by default, so making the
+ * field a full-height flex column and pushing the control down with mt-auto
+ * seats every control on the row's baseline. The labels still align at the top,
+ * which is what a reader scans, and the inputs align at the bottom, which is
+ * what makes the form look built rather than assembled.
+ */
 export function Field({
   label,
   htmlFor,
@@ -150,12 +167,12 @@ export function Field({
   children: ReactNode;
 }) {
   return (
-    <div>
+    <div className="flex h-full flex-col">
       <label htmlFor={htmlFor} className="block text-body-sm font-medium text-ink">
         {label}
       </label>
-      {help ? <p className="mt-1 text-caption text-ink-muted">{help}</p> : null}
-      <div className="mt-2">{children}</div>
+      {help ? <p className="mt-1 max-w-prose text-caption text-ink-muted">{help}</p> : null}
+      <div className="mt-auto pt-2">{children}</div>
     </div>
   );
 }

@@ -188,16 +188,64 @@ export const HOME = {
  * NAVIGATION AND FOOTER
  * ------------------------------------------------------------------------- */
 
+/**
+ * Primary navigation.
+ *
+ * The three branching items carry their children here rather than importing
+ * SERVICES, TOOLS, and the city data into the header. The header is a client
+ * component, so importing those modules would pull every service description
+ * and every municipality record into the client bundle and blow the 120KB
+ * budget in CLAUDE.md section 13. These are short label and href pairs, and
+ * this file is already in the bundle.
+ *
+ * `blurb` renders under the label in the desktop panel. It is the one-line
+ * reason to click, not a description of the page.
+ */
 export const NAV = {
   primary: [
-    { label: "Services", href: "/services/" },
-    { label: "Locations", href: "/locations/" },
-    { label: "Cost Tools", href: "/tools/" },
+    {
+      label: "Services",
+      href: "/services/",
+      overview: "All seven categories",
+      children: [
+        { label: "Roofing", href: "/services/roofing/", blurb: "Replacement, repair, storm damage, ice dams" },
+        { label: "Windows", href: "/services/windows/", blurb: "Insert and full frame, historic profiles" },
+        { label: "Siding", href: "/services/siding/", blurb: "Vinyl, fiber cement, cedar, composite" },
+        { label: "Bathroom Remodeling", href: "/services/bathroom-remodeling/", blurb: "Tub to shower, walk-ins, full remodels" },
+        { label: "Kitchen Remodeling", href: "/services/kitchen-remodeling/", blurb: "Refacing, counters, full remodels" },
+        { label: "Entry Doors", href: "/services/entry-doors/", blurb: "Front doors, sliders, storm doors" },
+        { label: "Gutters", href: "/services/gutters/", blurb: "Installation, replacement, guards" },
+      ],
+    },
+    {
+      label: "Locations",
+      href: "/locations/",
+      overview: "All 559 cities and towns",
+      children: [
+        { label: "Rhode Island", href: "/locations/rhode-island/", blurb: "39 municipalities" },
+        { label: "Massachusetts", href: "/locations/massachusetts/", blurb: "351 cities and towns" },
+        { label: "Connecticut", href: "/locations/connecticut/", blurb: "169 municipalities" },
+      ],
+    },
+    {
+      label: "Cost Tools",
+      href: "/tools/",
+      overview: "All five calculators",
+      children: [
+        { label: "Roofing Cost Calculator", href: "/tools/roofing-cost-calculator/", blurb: "Footprint, pitch, deck condition" },
+        { label: "Bathroom Remodel Cost", href: "/tools/bathroom-remodel-cost-calculator/", blurb: "Tub to shower through full remodel" },
+        { label: "Energy Savings Estimator", href: "/tools/energy-savings-estimator/", blurb: "What each upgrade actually returns" },
+        { label: "Project ROI Calculator", href: "/tools/home-improvement-roi-calculator/", blurb: "What comes back at resale" },
+        { label: "Material Comparison", href: "/tools/material-comparison-tool/", blurb: "Upfront against lifetime cost" },
+      ],
+    },
     { label: "Guides", href: "/blog/" },
     { label: "About", href: "/about/" },
   ],
   cta: { label: "Get free quotes", href: "/free-estimate/" },
 } as const;
+
+export type NavItem = (typeof NAV.primary)[number];
 
 export const FOOTER = {
   columns: [

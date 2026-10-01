@@ -13,6 +13,8 @@ import { NAV } from "@/lib/content";
  */
 export function MobileNav({ opaque }: { opaque: boolean }) {
   const [open, setOpen] = useState(false);
+  /** href of the expanded section, or null. One open at a time. */
+  const [section, setSection] = useState<string | null>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -24,6 +26,7 @@ export function MobileNav({ opaque }: { opaque: boolean }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) setSection(null);
     return () => {
       document.body.style.overflow = "";
     };
@@ -72,20 +75,76 @@ export function MobileNav({ opaque }: { opaque: boolean }) {
           <nav
             id="mobile-menu"
             aria-label="Primary"
-            className="relative border-b-hairline border-shell bg-oyster px-gutter pb-8 pt-2"
+            className="relative max-h-[calc(100vh-72px)] overflow-y-auto border-b-hairline border-shell bg-oyster px-gutter pb-8 pt-2"
           >
             <ul>
-              {NAV.primary.map((item) => (
-                <li key={item.href} className="border-b-hairline border-shell">
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex min-h-[56px] items-center font-display text-display-sm text-ink transition-colors duration-micro ease-out hover:text-cranberry"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {NAV.primary.map((item) => {
+                const branching = "children" in item;
+                const expanded = section === item.href;
+
+                return (
+                  <li key={item.href} className="border-b-hairline border-shell">
+                    {/*
+                      A branching item gets the label as a link to its own hub
+                      and a separate toggle for the children. Making the whole
+                      row a toggle would strip the hub pages out of mobile
+                      navigation entirely, and they are real pages.
+                    */}
+                    <div className="flex items-center justify-between gap-2">
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex min-h-[56px] flex-1 items-center font-display text-display-sm text-ink transition-colors duration-micro ease-out hover:text-cranberry"
+                      >
+                        {item.label}
+                      </Link>
+
+                      {branching ? (
+                        <button
+                          type="button"
+                          aria-expanded={expanded}
+                          aria-label={`${expanded ? "Collapse" : "Expand"} ${item.label}`}
+                          onClick={() => setSection(expanded ? null : item.href)}
+                          className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-control text-ink transition-colors duration-micro ease-out hover:bg-shell"
+                        >
+                          <svg
+                            width="14"
+                            height="9"
+                            viewBox="0 0 10 6"
+                            fill="none"
+                            aria-hidden="true"
+                            className={`transition-transform duration-base ease-out ${expanded ? "rotate-180" : ""}`}
+                          >
+                            <path
+                              d="M1 1l4 4 4-4"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+                      ) : null}
+                    </div>
+
+                    {branching && expanded ? (
+                      <ul className="pb-3">
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setOpen(false)}
+                              className="flex min-h-[48px] items-center border-l-rule border-shell pl-4 text-body text-ink-body transition-colors duration-micro ease-out hover:border-cranberry hover:text-cranberry"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </li>
+                );
+              })}
             </ul>
             <Link
               href={NAV.cta.href}

@@ -10,6 +10,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { LocalLedger } from "@/components/sections/LocalLedger";
 import { ProseBody } from "@/components/sections/ProseBody";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { PriceDrivers } from "@/components/sections/PriceDrivers";
+import { NearbyCostTable } from "@/components/sections/CostComparison";
 import { InlineLeadForm } from "@/components/forms/InlineLeadForm";
 import { SHARED } from "@/lib/content";
 import { SERVICES, getServiceBySlug, SERVICE_SLUGS } from "@/lib/data/services";
@@ -139,11 +141,26 @@ export default function ServiceCityPage({
           <div className="grid gap-12 py-14 pb-section lg:grid-cols-12 lg:gap-16 lg:py-16">
             <div className="lg:col-span-8">
               <ProseBody paragraphs={body} />
+
+              <PriceDrivers
+                serviceSlug={service.slug}
+                serviceName={service.name}
+                cityName={city.city}
+              />
+
               <InlineLeadForm
                 headline={`Get ${service.shortName.toLowerCase()} quotes in ${city.city}`}
                 body="Free, no obligation, and contractors who work in your town."
                 prefill={{ city: city.city, state: city.state, service: service.slug }}
               />
+
+              <NearbyCostTable
+                city={city}
+                nearby={nearby}
+                serviceSlug={service.slug}
+                serviceName={service.name}
+              />
+
               <FaqSection faqs={faqs} />
             </div>
 

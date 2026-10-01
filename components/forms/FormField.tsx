@@ -33,7 +33,10 @@ export function FormField({
   const errorId = error ? `${name}-error` : undefined;
 
   return (
-    <div>
+    // Full-height flex column so the control sits on the row baseline no matter
+    // how many lines of help text the field above it carries. See the note on
+    // Field in components/tools/ToolShell.tsx for the reasoning.
+    <div className="flex h-full flex-col">
       <label htmlFor={name} className="block text-body-sm font-medium text-ink">
         {label}
         {required ? (
@@ -51,8 +54,12 @@ export function FormField({
         </p>
       ) : null}
 
-      <div className="mt-2">{children}</div>
+      <div className="mt-auto pt-2">{children}</div>
 
+      {/*
+        The error sits in a reserved slot rather than being inserted into flow,
+        so validating one field does not shunt its neighbours down the page.
+      */}
       {error ? (
         <p id={errorId} role="alert" className="mt-1.5 text-caption text-danger">
           {error}

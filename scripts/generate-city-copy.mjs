@@ -131,13 +131,16 @@ ${f.bands}
 
 ${RULES}
 
-STRUCTURE. Produce 4 or 5 sections, each with a heading and 1 to 3 paragraphs. Total 450 to 600 words.
+STRUCTURE. Produce 7 or 8 sections, each with a heading and 2 to 4 paragraphs. Total 1,000 to 1,400 words. Depth is the point: this page should be the most useful thing published about home improvement in ${f.city}.
 
 Cover, in an order that makes sense for this particular town:
-  - What is actually standing in ${f.city} and what that means for exterior and interior work. Expand well past the researched note using your knowledge of how this kind of housing is built and what goes wrong with it.
-  - How the specific housing types here change at least three of these seven categories: roofing, windows, siding, bathrooms, kitchens, entry doors, gutters.
-  - Any local condition that genuinely moves the cost: age of stock, salt exposure, historic review, staging constraints, island transport. Only mention those that are true per the facts above.
+  - What is actually standing in ${f.city} and what that means for work on it. Expand well past the researched note using your knowledge of how this housing is built and what goes wrong with it. Name neighbourhoods, villages, or districts where the note gives them.
+  - How the specific housing types here change EACH of the seven categories: roofing, windows, siding, bathrooms, kitchens, entry doors, gutters. Give every one of the seven at least two sentences of genuinely specific treatment. This can be two or three sections rather than one.
+  - What goes wrong on this housing stock specifically, with the failure mechanism rather than a warning. What a homeowner here finds behind the wall, under the shingle, or beneath the floor.
+  - Any local condition that genuinely moves the cost: age of stock, salt exposure, historic review, staging constraints, island transport. Only those true per the facts above.
   - What work costs here, using ONLY the supplied bands, and what moves a specific house off them.
+  - How to choose and brief a contractor for this kind of house: what to ask, what a real quote should itemise, what an allowance should cover.
+  - Seasonal timing. When to schedule which work in this climate and why.
 
 Headings should be specific to ${f.city}, not generic. Do not write a heading that would fit any town.
 Do NOT include a permits section. That is rendered separately.
@@ -166,16 +169,19 @@ FACTS YOU MUST WRITE FROM. Do not contradict these and do not add facts of this 
 
 ${RULES}
 
-STRUCTURE. Produce 4 or 5 sections, each with a heading and 1 to 3 paragraphs. Total 450 to 600 words.
+STRUCTURE. Produce 7 or 8 sections, each with a heading and 2 to 4 paragraphs. Total 1,000 to 1,400 words. Depth is the point.
 
 This page must be about ${f.serviceName} ON THIS SPECIFIC HOUSING STOCK. That is the entire point. A reader in a different town with different housing must not be able to read this page and find it equally applicable.
 
 Cover:
   - What a ${f.serviceName.toLowerCase()} job involves on the housing types actually present in ${f.city}. Be technical and concrete: substrate, framing, access, the specific failure modes of this stock.
-  - Where more than one housing type is present, say what changes between them, because two houses a few streets apart price differently.
+  - Where more than one housing type is present, say what changes between them, because two houses a few streets apart price differently. Give each type its own treatment.
+  - The work in sequence, start to finish, on a house of this kind: what happens on day one, what gets uncovered, what the crew is doing at each stage.
+  - What goes wrong when this work is done badly on this housing stock, with the mechanism. Not a warning, an explanation.
   - Any local condition that genuinely applies: age, salt exposure, historic review, staging, island transport. Only those true per the facts.
-  - The cost range, using ONLY the supplied figure, and what moves a house off it.
-  - What a homeowner should ask for in a quote for this trade on this kind of house.
+  - The cost range, using ONLY the supplied figure, what moves a house off it, and which line items carry the variance.
+  - What a homeowner should ask for in a quote for this trade on this kind of house, and what a thin quote leaves out.
+  - When to schedule it in this climate, and when the work is not worth doing yet.
 
 Headings must be specific to ${f.city} and ${f.serviceName}. Do not write a heading that would fit any town.
 Do NOT include a permits section, an FAQ, or a nearby towns section. Those are rendered separately.`;
@@ -240,7 +246,7 @@ function violations(sections) {
   for (const re of claims) if (re.test(text)) found.push(`prohibited claim ${re}`);
 
   const words = text.split(/\s+/).filter(Boolean).length;
-  if (words < 380) found.push(`too short: ${words} words`);
+  if (words < 850) found.push(`too short: ${words} words`);
 
   return found;
 }
