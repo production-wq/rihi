@@ -206,7 +206,6 @@ export const NAV = {
     {
       label: "Services",
       href: "/services/",
-      overview: "All seven categories",
       children: [
         { label: "Roofing", href: "/services/roofing/", blurb: "Replacement, repair, storm damage, ice dams" },
         { label: "Windows", href: "/services/windows/", blurb: "Insert and full frame, historic profiles" },
